@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order List</title>
+</head>
+<body>
+    <h1>Orders</h1>
+    <a href="/orders/create/">Create New Order</a>
+    <ul>
+        {% for order in orders %}
+            <li>Order ID: {{ order.id }} - Customer ID: {{ order.customer_id }} - Product ID: {{ order.product_id }} - Quantity: {{ order.quantity }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

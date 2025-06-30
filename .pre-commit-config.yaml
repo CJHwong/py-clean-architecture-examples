@@ -1,0 +1,11 @@
+repos:
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.12.1
+    hooks:
+      - id: ruff-check
+        args: [ --fix ]
+      - id: ruff-format
+  - repo: https://github.com/CJHwong/pre-commit-import-linter
+    rev: 2.1.0
+    hooks:
+      - id: pre-commit-import-linter

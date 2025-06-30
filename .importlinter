@@ -1,0 +1,103 @@
+[importlinter]
+include_external_packages = true
+root_packages =
+    example_1_user_creation
+    example_2_fastapi_todo_app
+    example_3_django_todo_app
+    example_4_django_ecommerce_app
+
+[importlinter:contract:example_1_layers]
+name = Example 1: Layers
+type = layers
+root_package = example_1_user_creation
+layers =
+    example_1_user_creation.l4_frameworks_and_drivers
+    example_1_user_creation.l3_interface_adapters
+    example_1_user_creation.l2_use_cases
+    example_1_user_creation.l1_entities
+
+[importlinter:contract:example_2_layers]
+name = Example 2: Core Layers
+type = layers
+root_package = example_2_fastapi_todo_app
+layers =
+    example_2_fastapi_todo_app.todo_app.core.l4_frameworks_and_drivers
+    example_2_fastapi_todo_app.todo_app.core.l3_interface_adapters
+    example_2_fastapi_todo_app.todo_app.core.l2_use_cases
+    example_2_fastapi_todo_app.todo_app.core.l1_entities
+
+[importlinter:contract:example_2_independence]
+name = Example 2: Core Independence
+type = forbidden
+root_package = example_2_fastapi_todo_app
+source_modules =
+    example_2_fastapi_todo_app.todo_app.core
+forbidden_modules =
+    example_2_fastapi_todo_app.main
+
+[importlinter:contract:example_3_layers]
+name = Example 3: Core Layers
+type = layers
+root_package = example_3_django_todo_app
+layers =
+    example_3_django_todo_app.todo_app.core.l4_frameworks_and_drivers
+    example_3_django_todo_app.todo_app.core.l3_interface_adapters
+    example_3_django_todo_app.todo_app.core.l2_use_cases
+    example_3_django_todo_app.todo_app.core.l1_entities
+
+[importlinter:contract:example_3_independence]
+name = Example 3: Core Independence
+type = forbidden
+root_package = example_3_django_todo_app
+source_modules =
+    example_3_django_todo_app.todo_app.core
+forbidden_modules =
+    django
+
+[importlinter:contract:example_4_customers_layers]
+name = Example 4: Customers Layers
+type = layers
+root_package = example_4_django_ecommerce_app
+layers =
+    example_4_django_ecommerce_app.ecommerce_app.core.customers.l4_frameworks_and_drivers
+    example_4_django_ecommerce_app.ecommerce_app.core.customers.l3_interface_adapters
+    example_4_django_ecommerce_app.ecommerce_app.core.customers.l2_use_cases
+    example_4_django_ecommerce_app.ecommerce_app.core.customers.l1_entities
+
+[importlinter:contract:example_4_orders_layers]
+name = Example 4: Orders Layers
+type = layers
+root_package = example_4_django_ecommerce_app
+layers =
+    example_4_django_ecommerce_app.ecommerce_app.core.orders.l4_frameworks_and_drivers
+    example_4_django_ecommerce_app.ecommerce_app.core.orders.l3_interface_adapters
+    example_4_django_ecommerce_app.ecommerce_app.core.orders.l2_use_cases
+    example_4_django_ecommerce_app.ecommerce_app.core.orders.l1_entities
+
+[importlinter:contract:example_4_products_layers]
+name = Example 4: Products Layers
+type = layers
+root_package = example_4_django_ecommerce_app
+layers =
+    example_4_django_ecommerce_app.ecommerce_app.core.products.l4_frameworks_and_drivers
+    example_4_django_ecommerce_app.ecommerce_app.core.products.l3_interface_adapters
+    example_4_django_ecommerce_app.ecommerce_app.core.products.l2_use_cases
+    example_4_django_ecommerce_app.ecommerce_app.core.products.l1_entities
+
+[importlinter:contract:example_4_core_independence]
+name = Example 4: Core Independence
+type = forbidden
+root_package = example_4_django_ecommerce_app
+source_modules =
+    example_4_django_ecommerce_app.ecommerce_app.core
+forbidden_modules =
+    django
+
+[importlinter:contract:example_4_domain_independence]
+name = Example 4: Domain Independence
+type = independence
+root_package = example_4_django_ecommerce_app
+modules =
+    example_4_django_ecommerce_app.ecommerce_app.core.customers
+    example_4_django_ecommerce_app.ecommerce_app.core.orders
+    example_4_django_ecommerce_app.ecommerce_app.core.products

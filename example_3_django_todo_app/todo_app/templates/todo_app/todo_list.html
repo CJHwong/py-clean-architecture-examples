@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="title" placeholder="New to-do">
+        <button type="submit">Add</button>
+    </form>
+    <ul>
+        {% for todo in todos %}
+            <li>{{ todo.title }} - {% if todo.completed %}Completed{% else %}Pending{% endif %}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

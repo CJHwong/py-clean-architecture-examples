@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Order</title>
+</head>
+<body>
+    <h1>Create New Order</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="customer_id">Customer ID:</label><br>
+        <input type="number" id="customer_id" name="customer_id"><br>
+        <label for="product_id">Product ID:</label><br>
+        <input type="number" id="product_id" name="product_id"><br>
+        <label for="quantity">Quantity:</label><br>
+        <input type="number" id="quantity" name="quantity"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <a href="/orders/">Back to Order List</a>
+</body>
+</html>

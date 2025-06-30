@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Product</title>
+</head>
+<body>
+    <h1>Create New Product</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description"></textarea><br>
+        <label for="price">Price:</label><br>
+        <input type="number" step="0.01" id="price" name="price"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <a href="/products/">Back to Product List</a>
+</body>
+</html>
