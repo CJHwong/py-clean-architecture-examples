@@ -8,17 +8,17 @@ The goal is to show how the core application logic can be completely decoupled f
 
 The application is structured into the four standard layers:
 
--   **`l1_entities`**: Contains the `CalculatorState` data class, which represents the core state of the application.
--   **`l2_use_cases`**: Holds all the business logic for calculator operations (`InputDigitUseCase`, `CalculateResultUseCase`, etc.). It also defines the `ICalculatorPresenter` boundary interface for sending data outwards.
--   **`l3_interface_adapters`**: Includes the `CalculatorController` to handle GUI events and the `CalculatorPresenter` which implements the output boundary to update the display.
--   **`l4_frameworks_and_drivers`**: Contains the `gui.py` file with all the Tkinter-specific code for building and rendering the user interface.
+- **`l1_entities`**: Contains the `CalculatorState` data class, which represents the core state of the application.
+- **`l2_use_cases`**: Holds all the business logic for calculator operations (`InputDigitUseCase`, `CalculateResultUseCase`, etc.). It also defines the `ICalculatorPresenter` boundary interface for sending data outwards.
+- **`l3_interface_adapters`**: Includes the `CalculatorController` to handle GUI events and the `CalculatorPresenter` which implements the output boundary to update the display.
+- **`l4_frameworks_and_drivers`**: Contains the `gui.py` file with all the Tkinter-specific code for building and rendering the user interface.
 
 ## How to Run
 
 To run the calculator application, execute the following command from the root directory of the repository:
 
 ```bash
-python -m example_6_tkinter_calculator.main
+python main.py
 ```
 
 This will launch the graphical calculator window.
