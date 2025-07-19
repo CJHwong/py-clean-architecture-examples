@@ -100,7 +100,7 @@ Each example is self-contained and includes a `README.md` with setup and usage i
 
 ## TODO
 
-- [ ] Add a glossary of allowed Clean Architecture vocabulary terms and their definitions.
+- [x] Add a glossary of allowed Clean Architecture vocabulary terms and their definitions. See [Glossary](./doc/glossary.md).
 - [ ] Write a concise summary of Clean Architecture principles for the introduction.
 - [ ] Provide an example of a simple GUI application using Clean Architecture.
 - [ ] Add more advanced examples (e.g., microservices, event-driven, or async patterns).
