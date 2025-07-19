@@ -5,6 +5,7 @@ root_packages =
     example_2_fastapi_todo_app
     example_3_django_todo_app
     example_4_django_ecommerce_app
+    example_5_celery_tasks
 
 [importlinter:contract:example_1_layers]
 name = Example 1: Layers
@@ -101,3 +102,24 @@ modules =
     example_4_django_ecommerce_app.ecommerce_app.core.customers
     example_4_django_ecommerce_app.ecommerce_app.core.orders
     example_4_django_ecommerce_app.ecommerce_app.core.products
+
+[importlinter:contract:example_5_layers]
+name = Example 5: Core Layers
+type = layers
+root_package = example_5_celery_tasks
+layers =
+    example_5_celery_tasks.core.l4_frameworks_and_drivers
+    example_5_celery_tasks.core.l3_interface_adapters
+    example_5_celery_tasks.core.l2_use_cases
+    example_5_celery_tasks.core.l1_entities
+
+[importlinter:contract:example_5_independence]
+name = Example 5: Core Independence
+type = forbidden
+root_package = example_5_celery_tasks
+source_modules =
+    example_5_celery_tasks.core.l2_use_cases
+    example_5_celery_tasks.core.l1_entities
+forbidden_modules =
+    flask
+    celery

@@ -1,6 +1,6 @@
 # Clean Architecture Examples
 
-This repository demonstrates the Clean Architecture pattern in Python through several practical examples, each organized in its own directory. The goal is to illustrate how Clean Architecture principles can be applied to different types of applications, from simple CLI tools to web applications using FastAPI and Django.
+This repository demonstrates the Clean Architecture pattern in Python through several practical examples, each organized in its own directory. The goal is to illustrate how Clean Architecture principles can be applied to different types of applications, from simple CLI tools to web applications using FastAPI, Django, and background task queues with Celery.
 
 A key ambition of this repository is to make the code structure **faithfully and transparently reflect the Clean Architecture circle diagram** (see below). Each example is carefully organized so that every folder and layer in the codebase directly maps to a corresponding ring in the diagram. This approach is intended to make the separation of concerns, direction of dependencies, and the role of each layer as clear and explicit as possible.
 
@@ -17,6 +17,7 @@ A key ambition of this repository is to make the code structure **faithfully and
   - [Example 2: FastAPI Todo App](#example-2-fastapi-todo-app)
   - [Example 3: Django Todo App](#example-3-django-todo-app)
   - [Example 4: Django Ecommerce App](#example-4-django-ecommerce-app)
+  - [Example 5: Celery Task Queue](#example-5-celery-task-queue)
   - [References](#references)
   - [TODO](#todo)
 
@@ -73,7 +74,13 @@ A Django-based todo application, with Clean Architecture layers inside `todo_app
 
 **Path:** `example_4_django_ecommerce_app/`
 
-A more complex Django application for ecommerce, following Clean Architecture principles. The structure mirrors the todo app, with additional features for ecommerce (e.g., products, orders).
+A more complex Django application for ecommerce, where the core logic is organized by feature (Customers, Orders, Products). Each feature has its own set of Clean Architecture layers, demonstrating how the pattern scales.
+
+## Example 5: Celery Task Queue
+
+**Path:** `example_5_celery_tasks/`
+
+Demonstrates how to integrate a background task queue (Celery) with a Flask web application while maintaining clean architecture. The `core` module is completely decoupled from the frameworks. The Flask app and Celery workers are external entry points that use factories from Layer 4 to build and execute use cases.
 
 ---
 
@@ -82,6 +89,8 @@ A more complex Django application for ecommerce, following Clean Architecture pr
 - [Clean Architecture by Robert C. Martin](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html)
 - [FastAPI Documentation](https://fastapi.tiangolo.com/)
 - [Django Documentation](https://docs.djangoproject.com/)
+- [Flask Documentation](https://flask.palletsprojects.com/)
+- [Celery Documentation](https://docs.celeryq.dev/)
 
 ---
 

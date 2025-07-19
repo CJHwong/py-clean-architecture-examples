@@ -84,3 +84,6 @@ venv/
 # Code quality tools
 .import_linter_cache/
 .ruff_cache/
+
+# local memory files
+.memory/
