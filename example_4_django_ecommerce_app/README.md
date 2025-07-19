@@ -1,4 +1,4 @@
-# Example 5: Django Project with Multiple Features
+# Example 4: Django Project with Multiple Features
 
 This example demonstrates a Django project structured using Clean Architecture principles, where the core logic is organized by feature, suitable for more complex applications with many distinct features.
 
@@ -7,7 +7,7 @@ Each major feature (e.g., Products, Orders, Customers) has its own dedicated set
 ## Project Structure
 
 ```plaintext
-example_5_django_complex_features/
+example_4_django_complex_features/
 ├── manage.py
 ├── README.md
 ├── django_project/
@@ -87,7 +87,7 @@ example_5_django_complex_features/
 1. **Navigate to the project directory:**
 
     ```bash
-    cd example_5_django_complex_features
+    cd example_4_django_complex_features
     ```
 
 2. **Install dependencies:**
