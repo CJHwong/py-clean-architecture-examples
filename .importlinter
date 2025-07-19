@@ -6,6 +6,7 @@ root_packages =
     example_3_django_todo_app
     example_4_django_ecommerce_app
     example_5_celery_tasks
+    example_6_tkinter_calculator
 
 [importlinter:contract:example_1_layers]
 name = Example 1: Layers
@@ -123,3 +124,13 @@ source_modules =
 forbidden_modules =
     flask
     celery
+
+[importlinter:contract:example_6_layers]
+name = Example 6: Layers
+type = layers
+root_package = example_6_tkinter_calculator
+layers =
+    example_6_tkinter_calculator.l4_frameworks_and_drivers
+    example_6_tkinter_calculator.l3_interface_adapters
+    example_6_tkinter_calculator.l2_use_cases
+    example_6_tkinter_calculator.l1_entities
