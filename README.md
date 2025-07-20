@@ -19,6 +19,7 @@ A key ambition of this repository is to make the code structure **faithfully and
   - [Example 4: Django Ecommerce App](#example-4-django-ecommerce-app)
   - [Example 5: Celery Task Queue](#example-5-celery-task-queue)
   - [Example 6: Tkinter GUI Calculator](#example-6-tkinter-gui-calculator)
+  - [Example 7: Async Weather Aggregator](#example-7-async-weather-aggregator)
   - [References](#references)
   - [TODO](#todo)
 
@@ -89,6 +90,12 @@ Demonstrates how to integrate a background task queue (Celery) with a Flask web 
 
 A reactive GUI application using Python's built-in `Tkinter` library. This example clearly demonstrates how the UI can be a simple "plugin" to the core business logic and how a reactive data flow can be achieved while respecting the Dependency Rule.
 
+## Example 7: Async Weather Aggregator
+
+**Path:** `example_7_async_weather_aggregator/`
+
+A desktop application built with `tkinter` that asynchronously fetches and aggregates weather data from multiple sources. It showcases how to apply Clean Architecture principles to an asynchronous GUI application, ensuring a clear separation of concerns and maintainability.
+
 ---
 
 ## References
@@ -110,4 +117,4 @@ Each example is self-contained and includes a `README.md` with setup and usage i
 - [x] Add a glossary of allowed Clean Architecture vocabulary terms and their definitions. See [Glossary](./doc/glossary.md).
 - [x] Write a concise summary of Clean Architecture principles for the introduction. See [Core Principles](./doc/principles.md).
 - [x] Provide an example of a simple GUI application using Clean Architecture.
-- [ ] Add more advanced examples (e.g., microservices, event-driven, or async patterns).
+- [x] Add more advanced examples (e.g., microservices, event-driven, or async patterns).

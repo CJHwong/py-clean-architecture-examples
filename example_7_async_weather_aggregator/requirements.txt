@@ -1,0 +1,2 @@
+httpx
+async-tkinter-loop

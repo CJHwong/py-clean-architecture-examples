@@ -7,6 +7,7 @@ root_packages =
     example_4_django_ecommerce_app
     example_5_celery_tasks
     example_6_tkinter_calculator
+    example_7_async_weather_aggregator
 
 [importlinter:contract:example_1_layers]
 name = Example 1: Layers
@@ -134,3 +135,13 @@ layers =
     example_6_tkinter_calculator.l3_interface_adapters
     example_6_tkinter_calculator.l2_use_cases
     example_6_tkinter_calculator.l1_entities
+
+[importlinter:contract:example_7_layers]
+name = Example 7: Layers
+type = layers
+root_package = example_7_async_weather_aggregator
+layers =
+    example_7_async_weather_aggregator.l4_frameworks_and_drivers
+    example_7_async_weather_aggregator.l3_interface_adapters
+    example_7_async_weather_aggregator.l2_use_cases
+    example_7_async_weather_aggregator.l1_entities
