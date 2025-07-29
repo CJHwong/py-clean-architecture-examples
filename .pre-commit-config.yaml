@@ -5,7 +5,54 @@ repos:
       - id: ruff
         args: [ --fix, --exit-non-zero-on-fix ]
       - id: ruff-format
-  - repo: https://github.com/CJHwong/pre-commit-import-linter
-    rev: 2.1.0
+  - repo: local
     hooks:
-      - id: pre-commit-import-linter
+      - id: pre-commit-import-linter-example1
+        name: Import Linter (Example 1 - User Creation)
+        files: '^example_1_user_creation/.*\.py$'
+        pass_filenames: false
+        language: python
+        additional_dependencies: [import-linter>=2.0]
+        entry: bash -c 'PYTHONPATH=. lint-imports --config example_1_user_creation/.importlinter.ini --verbose'
+      - id: pre-commit-import-linter-example2
+        name: Import Linter (Example 2 - FastAPI Todo App)
+        files: '^example_2_fastapi_todo_app/.*\.py$'
+        pass_filenames: false
+        language: python
+        additional_dependencies: [import-linter>=2.0]
+        entry: bash -c 'PYTHONPATH=. lint-imports --config example_2_fastapi_todo_app/.importlinter.ini --verbose'
+      - id: pre-commit-import-linter-example3
+        name: Import Linter (Example 3 - Django Todo App)
+        files: '^example_3_django_todo_app/.*\.py$'
+        pass_filenames: false
+        language: python
+        additional_dependencies: [import-linter>=2.0]
+        entry: bash -c 'PYTHONPATH=. lint-imports --config example_3_django_todo_app/.importlinter.ini --verbose'
+      - id: pre-commit-import-linter-example4
+        name: Import Linter (Example 4 - Django Ecommerce App)
+        files: '^example_4_django_ecommerce_app/.*\.py$'
+        pass_filenames: false
+        language: python
+        additional_dependencies: [import-linter>=2.0]
+        entry: bash -c 'PYTHONPATH=. lint-imports --config example_4_django_ecommerce_app/.importlinter.ini --verbose'
+      - id: pre-commit-import-linter-example5
+        name: Import Linter (Example 5 - Celery Tasks)
+        files: '^example_5_celery_tasks/.*\.py$'
+        pass_filenames: false
+        language: python
+        additional_dependencies: [import-linter>=2.0]
+        entry: bash -c 'PYTHONPATH=. lint-imports --config example_5_celery_tasks/.importlinter.ini --verbose'
+      - id: pre-commit-import-linter-example6
+        name: Import Linter (Example 6 - Tkinter Calculator)
+        files: '^example_6_tkinter_calculator/.*\.py$'
+        pass_filenames: false
+        language: python
+        additional_dependencies: [import-linter>=2.0]
+        entry: bash -c 'PYTHONPATH=. lint-imports --config example_6_tkinter_calculator/.importlinter.ini --verbose'
+      - id: pre-commit-import-linter-example7
+        name: Import Linter (Example 7 - Async Weather Aggregator)
+        files: '^example_7_async_weather_aggregator/.*\.py$'
+        pass_filenames: false
+        language: python
+        additional_dependencies: [import-linter>=2.0]
+        entry: bash -c 'PYTHONPATH=. lint-imports --config example_7_async_weather_aggregator/.importlinter.ini --verbose'
