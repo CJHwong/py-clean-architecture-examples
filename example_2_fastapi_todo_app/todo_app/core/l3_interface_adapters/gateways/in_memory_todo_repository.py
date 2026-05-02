@@ -13,7 +13,5 @@ class InMemoryTodoRepository(ITodoRepository):
     def list_all(self) -> list[TodoItem]:
         return sorted(list(self._todos.values()), key=lambda todo: todo.title)
 
-    def create(self, title: str) -> TodoItem:
-        new_todo = TodoItem(id=uuid.uuid4(), title=title, completed=False)
-        self._todos[new_todo.id] = new_todo
-        return new_todo
+    def save(self, todo: TodoItem) -> None:
+        self._todos[todo.id] = todo

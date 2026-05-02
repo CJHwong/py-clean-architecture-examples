@@ -1,7 +1,7 @@
-from .boundaries import ITodoListPresenter, ITodoRepository, ListTodosUseCase
+from .boundaries import ITodoListPresenter, ITodoRepository
 
 
-class ListTodos(ListTodosUseCase):
+class ListTodosUseCase:
     def __init__(self, repository: ITodoRepository, presenter: ITodoListPresenter):
         self.repository = repository
         self.presenter = presenter

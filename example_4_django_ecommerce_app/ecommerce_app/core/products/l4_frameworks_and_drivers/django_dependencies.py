@@ -8,6 +8,9 @@ from ecommerce_app.core.products.l2_use_cases.create_product_use_case import (
 from ecommerce_app.core.products.l2_use_cases.list_products_use_case import (
     ListProductsUseCase,
 )
+from ecommerce_app.core.products.l3_interface_adapters.controllers.product_controller import (
+    ProductController,
+)
 from ecommerce_app.core.products.l3_interface_adapters.gateways.django_product_repository import (
     DjangoProductRepository,
 )
@@ -30,3 +33,10 @@ def get_create_product_use_case() -> CreateProductUseCase:
 
 def get_list_products_use_case() -> ListProductsUseCase:
     return ListProductsUseCase(get_product_repository(), get_product_presenter())
+
+
+def get_product_controller() -> ProductController:
+    return ProductController(
+        create_use_case=get_create_product_use_case(),
+        list_use_case=get_list_products_use_case(),
+    )

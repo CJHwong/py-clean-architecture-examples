@@ -9,3 +9,7 @@ class Order:
     product_id: int
     quantity: int
     order_date: datetime | None
+
+    def __post_init__(self):
+        if self.quantity <= 0:
+            raise ValueError(f"Order quantity must be positive, got {self.quantity}.")

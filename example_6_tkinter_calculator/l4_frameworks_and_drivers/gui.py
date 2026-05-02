@@ -12,16 +12,15 @@ class CalculatorView:
     rendering the UI and delegating user actions to the controller.
     """
 
-    def __init__(self, controller: CalculatorController):
+    def __init__(self, window: tk.Tk, controller: CalculatorController, display_var: tk.StringVar):
         self._controller = controller
+        self.window = window
+        self.display_var = display_var
 
-        self.window = tk.Tk()
         self.window.title("Clean Architecture Calculator")
         self.window.geometry("400x600")
         self.window.resizable(False, False)
         self.window.configure(bg="white")
-
-        self.display_var = tk.StringVar()
 
         self._create_widgets()
 

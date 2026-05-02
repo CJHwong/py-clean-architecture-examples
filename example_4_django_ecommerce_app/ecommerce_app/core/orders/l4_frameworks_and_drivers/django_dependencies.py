@@ -8,6 +8,9 @@ from ecommerce_app.core.orders.l2_use_cases.create_order_use_case import (
 from ecommerce_app.core.orders.l2_use_cases.list_orders_use_case import (
     ListOrdersUseCase,
 )
+from ecommerce_app.core.orders.l3_interface_adapters.controllers.order_controller import (
+    OrderController,
+)
 from ecommerce_app.core.orders.l3_interface_adapters.gateways.django_order_repository import (
     DjangoOrderRepository,
 )
@@ -30,3 +33,10 @@ def get_create_order_use_case() -> CreateOrderUseCase:
 
 def get_list_orders_use_case() -> ListOrdersUseCase:
     return ListOrdersUseCase(get_order_repository(), get_order_presenter())
+
+
+def get_order_controller() -> OrderController:
+    return OrderController(
+        create_use_case=get_create_order_use_case(),
+        list_use_case=get_list_orders_use_case(),
+    )

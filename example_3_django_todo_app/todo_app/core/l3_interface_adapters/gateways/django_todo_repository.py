@@ -8,9 +8,8 @@ class DjangoTodoRepository(ITodoRepository):
         django_todos = TodoDjangoModel.objects.all().order_by("-created_at")
         return [self._to_entity(django_model) for django_model in django_todos]
 
-    def create(self, title: str) -> TodoItem:
-        django_todo = TodoDjangoModel.objects.create(title=title)
-        return self._to_entity(django_todo)
+    def save(self, todo: TodoItem) -> None:
+        TodoDjangoModel.objects.create(id=todo.id, title=todo.title, completed=todo.completed)
 
     def _to_entity(self, django_model: TodoDjangoModel) -> TodoItem:
         return TodoItem(

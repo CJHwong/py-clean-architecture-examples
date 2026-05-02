@@ -7,7 +7,7 @@ app = Celery(
     "tasks",
     broker=REDIS_URL,
     backend=REDIS_URL,
-    include=["tasks"],
+    include=["core.l4_frameworks_and_drivers.celery_tasks"],
 )
 
 if __name__ == "__main__":

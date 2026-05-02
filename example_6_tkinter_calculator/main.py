@@ -1,3 +1,5 @@
+import tkinter as tk
+
 from l1_entities.calculator_state import CalculatorState
 from l2_use_cases.calculate_result_use_case import CalculateResultUseCase
 from l2_use_cases.clear_use_case import ClearUseCase
@@ -10,35 +12,24 @@ from l4_frameworks_and_drivers.gui import CalculatorView
 
 
 def main():
-    """
-    The Composition Root.
-
-    This is where the application is assembled. It instantiates all the
-    necessary objects and injects the dependencies.
-    """
-    # 1. Create the core state entity
+    # 1. Core state entity
     state = CalculatorState()
 
-    # 2. Create the GUI View and its display variable
-    # The view is created first to get the tk.StringVar
-    # which the presenter needs.
-    # Note: We pass a dummy controller for now.
-    view = CalculatorView(controller=None)
-    display_var = view.display_var
+    # 2. Framework objects (tkinter) created here in the composition root
+    window = tk.Tk()
+    display_var = tk.StringVar(value="0")
 
-    # 3. Create the Presenter (Interface Adapter)
-    presenter = CalculatorPresenter(display_var)
+    # 3. Presenter wired to the display callback — no tkinter dependency inside presenter
+    presenter = CalculatorPresenter(display_var.set)
 
-    # 4. Create Use Cases (Application Logic)
-    # Inject the state and the presenter into each use case
+    # 4. Use cases
     clear_uc = ClearUseCase(state, presenter)
     input_digit_uc = InputDigitUseCase(state, presenter)
     input_decimal_uc = InputDecimalUseCase(state, presenter)
     input_operator_uc = InputOperatorUseCase(state, presenter)
     calculate_result_uc = CalculateResultUseCase(state, presenter)
 
-    # 5. Create the Controller (Interface Adapter)
-    # Inject all the use cases into the controller
+    # 5. Controller
     controller = CalculatorController(
         input_digit_use_case=input_digit_uc,
         input_operator_use_case=input_operator_uc,
@@ -47,10 +38,8 @@ def main():
         clear_use_case=clear_uc,
     )
 
-    # 6. Assign the fully-configured controller to the view
-    view._controller = controller
-
-    # 7. Start the application
+    # 6. View — fully assembled on construction, no two-phase init needed
+    view = CalculatorView(window=window, controller=controller, display_var=display_var)
     view.start()
 
 

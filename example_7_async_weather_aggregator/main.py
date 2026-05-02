@@ -10,39 +10,29 @@ from l4_frameworks_and_drivers.gui import WeatherApp
 
 
 def main():
-    """
-    Main function to set up and run the weather aggregator application.
-    """
-    # --- Dependency Injection ---
-
-    # 1. Create Gateways
+    # 1. Gateways
     gateways = {
         "Mock Service": MockWeatherGateway(),
         "Open-Meteo": OpenMeteoGateway(),
     }
 
-    # 2. Create the GUI
-    root = tk.Tk()
+    # 2. Presenter (callbacks wired after the view exists)
+    presenter = WeatherPresenter()
 
-    # 3. Create Presenter
-    def placeholder_update(text):
-        print(f"Placeholder update: {text}")
-
-    presenter = WeatherPresenter(placeholder_update)
-
-    # 4. Create Use Case
+    # 3. Use Case + Controller
     get_weather_use_case = GetWeatherUseCase(gateways, presenter)
-
-    # 5. Create Controller
     controller = WeatherController(get_weather_use_case)
 
-    # 6. Create the App, passing in the available services
+    # 4. View
+    root = tk.Tk()
     app = WeatherApp(root, controller, list(gateways.keys()))
 
-    # 7. Connect the presenter to the actual GUI update method
-    presenter._view_update_callback = app.update_display
+    # 5. Wire presenter to the real GUI methods now that the view exists
+    presenter.connect(
+        view_update_callback=app.update_display,
+        set_loading_callback=app.set_loading_state,
+    )
 
-    # --- Run the application ---
     async_mainloop(root)
 
 

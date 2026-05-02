@@ -8,6 +8,9 @@ from ecommerce_app.core.customers.l2_use_cases.create_customer_use_case import (
 from ecommerce_app.core.customers.l2_use_cases.list_customers_use_case import (
     ListCustomersUseCase,
 )
+from ecommerce_app.core.customers.l3_interface_adapters.controllers.customer_controller import (
+    CustomerController,
+)
 from ecommerce_app.core.customers.l3_interface_adapters.gateways.django_customer_repository import (
     DjangoCustomerRepository,
 )
@@ -30,3 +33,10 @@ def get_create_customer_use_case() -> CreateCustomerUseCase:
 
 def get_list_customers_use_case() -> ListCustomersUseCase:
     return ListCustomersUseCase(get_customer_repository(), get_customer_presenter())
+
+
+def get_customer_controller() -> CustomerController:
+    return CustomerController(
+        create_use_case=get_create_customer_use_case(),
+        list_use_case=get_list_customers_use_case(),
+    )
