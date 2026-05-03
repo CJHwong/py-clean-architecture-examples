@@ -12,6 +12,7 @@ A key ambition of this repository is to make the code structure **faithfully and
 
 - [Clean Architecture Examples](#clean-architecture-examples)
   - [Table of Contents](#table-of-contents)
+  - [Bootstrap Skill](#bootstrap-skill)
   - [Import Linter](#import-linter)
   - [Example 1: User Creation CLI](#example-1-user-creation-cli)
   - [Example 2: FastAPI Todo App](#example-2-fastapi-todo-app)
@@ -20,8 +21,25 @@ A key ambition of this repository is to make the code structure **faithfully and
   - [Example 5: Celery Task Queue](#example-5-celery-task-queue)
   - [Example 6: Tkinter GUI Calculator](#example-6-tkinter-gui-calculator)
   - [Example 7: Async Weather Aggregator](#example-7-async-weather-aggregator)
+  - [Bootstrap Skill](#bootstrap-skill)
   - [References](#references)
   - [TODO](#todo)
+
+---
+
+## Bootstrap Skill
+
+An agent skill for Claude Code and compatible AI agents that scaffolds a new Clean Architecture Python project. It interviews you for project name, type, and domain entities, then creates the project files directly on disk.
+
+```bash
+# Claude Code (default)
+curl -sSL https://raw.githubusercontent.com/CJHwong/py-clean-architecture-examples/main/install.sh | sh
+
+# Agents (~/.agents/skills/)
+curl -sSL https://raw.githubusercontent.com/CJHwong/py-clean-architecture-examples/main/install.sh | sh -s agents
+```
+
+Once installed, invoke it with `/py-clean-arch` and describe what you want to build.
 
 ---
 
