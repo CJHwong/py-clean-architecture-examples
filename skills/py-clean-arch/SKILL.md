@@ -110,3 +110,9 @@ Things an agent gets wrong without being told:
 **Celery's boundary interface is a queue, not a presenter.** `l2_use_cases/boundaries/` contains `i_<entity>_queue.py` (with `enqueue()`), not an `i_<entity>_presenter.py`. The celery gateway in l3 implements the queue interface. Presenters still exist in l3 but are called from the Flask trigger (`app.py`), not from use cases.
 
 **Django ORM models live outside `core/`.** `<app>/models.py` is in the Django app layer, not inside `l3_interface_adapters/`. The Django gateway in `core/l3_interface_adapters/gateways/` imports from `models.py`. Don't move models into core.
+
+**At scale, all inbound ports are gateways.** The `i_*_repository` / `i_*_presenter` split in `references/` is the textbook form. Production adoptions collapse every L2 port to one term — `<role>_gateway.py` with class `<Role>Gateway(ABC)`, no `i_` prefix — even when it's conceptually a repository. L3 impls are named by their backing provider, and one port commonly has several (`django_*`, `fms_*`, `aws_*`, `composite_*`). Don't force the repository/presenter naming on a real service.
+
+**Presenters drop out of L2 once there's an HTTP API.** The injected-presenter output port (use case calls `presenter.present()`) is for CLI/template UIs. With a JSON API, the use case returns a plain DTO and the presenter lives in L3, called by the controller (router/view), not the use case. Don't add an `i_*_presenter` boundary to a FastAPI/Ninja service.
+
+**Scope the no-frameworks-in-core contract to I/O SDKs.** The `references/` contract bans a long list (django, fastapi, pydantic, sqlalchemy...). Real adoptions keep only true I/O SDKs out of L1/L2 — `requests`, `boto3`, `botocore` — and let the layers contract handle the framework boundary. Banning pydantic or dataclasses-adjacent libs in core is more than production keeps.
