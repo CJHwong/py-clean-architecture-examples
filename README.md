@@ -39,6 +39,8 @@ curl -sSL https://raw.githubusercontent.com/CJHwong/py-clean-architecture-exampl
 curl -sSL https://raw.githubusercontent.com/CJHwong/py-clean-architecture-examples/main/install.sh | sh -s agents
 ```
 
+The installer first warns that a piped script runs as you and asks `[Y/n]` on the terminal. An agent or CI job has no terminal, so it passes `-y`: `curl ... | sh -s -- -y` (or `sh -s -- -y agents`).
+
 Once installed, invoke it with `/py-clean-arch` and describe what you want to build.
 
 ---
